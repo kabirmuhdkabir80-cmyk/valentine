@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Iman 💖</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(to bottom, #ffe6f0, #ffffff);
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    .card {
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      max-width: 380px;
+    }
+
+    h1 {
+      color: #ff4d88;
+    }
+
+    p {
+      color: #555;
+      font-size: 17px;
+    }
+
+    .heart {
+      font-size: 60px;
+      animation: pulse 1.5s infinite;
+      margin-bottom: 10px;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+    button {
+      border: none;
+      padding: 12px 25px;
+      margin: 10px;
+      font-size: 16px;
+      border-radius: 30px;
+      cursor: pointer;
+      background: #ff4d88;
+      color: white;
+      transition: all 0.3s ease;
+    }
+
+    #messageBox {
+      display: none;
+      margin-top: 20px;
+      padding: 18px;
+      background: #ffe6f0;
+      border-radius: 15px;
+      color: #ff4d88;
+      font-size: 16px;
+      animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    #thankYou {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- MAIN CARD -->
+  <div class="card" id="main">
+    <div class="heart">💗</div>
+    <h1>Iman, Iman…</h1>
+    <p>You make my world softer and brighter.</p>
+    <p><strong>Will you be my Valentine? 💘</strong></p>
+
+    <button id="yesBtn" onclick="sayYes()">YES</button>
+    <button onclick="sayNo()">NO</button>
+
+    <!-- MESSAGE BOX (appears near buttons) -->
+    <div id="messageBox"></div>
+  </div>
+
+  <!-- THANK YOU -->
+  <div class="card" id="thankYou">
+    <div class="heart">💖</div>
+    <h1>She said YES 💕</h1>
+    <p>Thank you for choosing me, Iman.</p>
+    <p>I promise to make you smile every day 💘</p>
+  </div>
+
+  <script>
+    let noCount = 0;
+    let yesSize = 16;
+    const box = document.getElementById("messageBox");
+
+    function sayYes() {
+      document.getElementById("main").style.display = "none";
+      document.getElementById("thankYou").style.display = "block";
+    }
+
+    function sayNo() {
+      noCount++;
+      box.style.display = "block";
+
+      if (noCount === 1) {
+        box.innerHTML = "Don’t do this to me 💔";
+      }
+      else if (noCount === 2) {
+        box.innerHTML = "Think about it again 🥺";
+      }
+      else if (noCount === 3) {
+        box.innerHTML = "One last chance… please 😭";
+      }
+      else if (noCount === 4) {
+        box.innerHTML = "You are breaking my heart 💔";
+      }
+      else if (noCount === 5) {
+        box.innerHTML =
+          "<strong>Five reasons you should accept me 💗</strong><br><br>" +
+          "1. I’ll always choose you, every day<br>" +
+          "2. I care about your heart deeply<br>" +
+          "3. I’ll stand with you in good and bad times<br>" +
+          "4. I’ll make you laugh even on hard days<br>" +
+          "5. My heart already belongs to you 💘";
+      }
+      else {
+        yesSize += 14;
+        document.getElementById("yesBtn").style.fontSize = yesSize + "px";
+      }
+    }
+  </script>
+
+</body>
+</html>
